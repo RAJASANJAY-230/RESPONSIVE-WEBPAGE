@@ -1,0 +1,173 @@
+
+# HTML CODE 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Webpage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <header>
+        <h1 class="logo">My Website</h1>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav id="navMenu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    
+    <section class="content">
+        <h2>Responsive Web Design</h2>
+        <p>
+            This webpage automatically adjusts its layout based on screen size
+            using HTML, CSS, and JavaScript.
+        </p>
+        <button onclick="showMessage()">Click Me</button>
+        <p id="message"></p>
+    </section>
+
+    
+    <footer>
+        <p>© 2026 Responsive Webpage</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+# CSS CODE 
+
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e3a8a;
+    color: white;
+    padding: 15px;
+}
+
+.logo {
+    margin: 0;
+}
+nav.active {
+    display: flex;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+
+.content {
+    padding: 40px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        background: #1e40af;
+        width: 100%;
+    }
+
+    nav a {
+        padding: 10px;
+        border-top: 1px solid white;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
+
+
+
+
+# JAVA SCRIPT CODE 
+
+
+
+
+// Select elements
+const menuIcon = document.querySelector(".menu-icon");
+const navMenu = document.getElementById("navMenu");
+
+// Toggle menu on mobile click
+menuIcon.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+});
+
+// Handle screen resize automatically
+function handleResize() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth > 768) {
+        // Desktop view: always show menu
+        navMenu.classList.remove("active");
+        navMenu.style.display = "flex";
+    } else {
+        // Mobile view: hide menu by default
+        navMenu.style.display = "none";
+    }
+}
+
+// Run on page load
+window.addEventListener("load", handleResize);
+
+// Run on window resize
+window.addEventListener("resize", handleResize);
+
+// Optional button interaction
+function showMessage() {
+    document.getElementById("message").textContent =
+        "JavaScript dynamically adapts this webpage to screen size!";
+}
+
+
+
+
